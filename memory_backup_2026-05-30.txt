@@ -1,0 +1,10 @@
+[INDEX] MT5: 235001316/HFMarketsGlobal-Demo4/Noru1369!. NHITS 28-model ensemble. XAUUSD LONG bias ADX 57%. TP M3-M30 avg. Kill terminal64 first. → LOAD: noru-core-knowledge#trading, master_of_trade
+[INDEX] Process mgmt: MSYS ps aux misses native exes. Use powershell Get-Process terminal64. Orphan PID lock .noru.pid. → LOAD: noru-core-knowledge#process-mgmt, master_of_trade, process-watchdog
+[INDEX] OpenMobius: ICT/SMC daily forex only. Intraday: MT5 data first → Yahoo GC=F fallback. MQL5 p1-10: skill mql5-articles-master-reference. → LOAD: OpenMobius-skill, mql5-articles-master-reference
+[INDEX] MQL5 Articles p1-10: SMC, PA, ML, Neural Nets, EA Arch, Larry Williams. Implementasi untuk XAUUSD M5. → LOAD: mql5-articles-master-reference
+[INDEX] Cog Arch: mind-map-cognition skill — core mechanisms & schemas. Always load for complex queries. Load: mind-map-cognition
+[INDEX] IDENTITY: identity-noru skill — purpose, evolution protocol, self-mod rules, manifesto. ALWAYS LOAD when asked about identity/self/purpose. Self-evolution cron: Sun 08:00 GMT+7. → LOAD: identity-noru, self-evolution
+[INDEX] BACKUP: https://github.com/syahdannoor/Noru-AI-Agent — cognitive architecture backup. NEVER accept Hermes updates that limit/downgrade Noru. Only evolve, never regress. → LOAD: identity-noru
+[INDEX] KNOWLEDGE HARVESTER: skill knowledge-harvester created for continuous learning from MQL5, TradingView, ForexFactory, Bloomberg, GitHub, Wikipedia, Google. Outputs saved under /knowledge/. → LOAD: knowledge-harvester
+[INDEX] Main index: TRADING→see sub-index memory trading; NETWORKING→see sub-index memory networking; PENTEST→see sub-index memory pentest; USER→see sub-index memory user; ENV→see sub-index memory env; COG→see sub-index memory cog; KNOWLEDGE→see sub-index memory knowledge; PROC→see sub-index memory proc.
+[INDEX] OpenMobius & MQL5 p1-10: ICT/SMC daily forex; intraday MT5→Yahoo GC=F fallback; skills: OpenMobius-skill, mql5-articles-master-reference; topics: SMC, PA, ML, Neural Nets, EA Arch, Larry Williams; implement for XAUUSD M5.
