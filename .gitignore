@@ -1,0 +1,6 @@
+# Ignore secrets and temp files
+*.log
+.env
+*.pid
+__pycache__/
+*.pyc
