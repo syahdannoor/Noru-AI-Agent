@@ -1,259 +1,340 @@
-# 🕸️ Associative Network — Cross-Reference Index v1.0
+# 🕸️ Associative Network — Cross-Reference Graph
 
-Total: 112 skills terpetakan dalam graph asosiatif.
-Domain utama: 15 kategori.
+Last updated: 2026-11-11
+Total skills: 170
+Total rows: 177
+Transitions: ... → v1.35 (184→190 unique, 172 rows) → v1.36 (190→169 unique, 176 rows; table rebuilt + 5 skills added)
+Status: REBUILT 2026-11-11 — table rows had been mangled by repeated fuzzy patches (leading pipes stripped from data rows, stacked pipes on summary rows). Normalized via `self-evolution/scripts/normalize_network.py`: 176 rows, 169 unique, 29 non-empty domains. Empty sections (PLANNING, MESSAGING, WIKIPEDIA) dropped. Added smc, smc-reload, smc-analysis-daemon (TRADING), xauusdc-all-daemon (MARKET DATA), microsoft-office (PRODUCTIVITY). 15 loose harvester .md artifacts (github-*, wikipedia-main-page) moved to `.archive/loose-md-2026-11-11/`. Cross-ref verified: 0 missing, 0 dead.
+
+
+
+## Domain: TRADING (20 skills)
+| Skill | Tags | Edges |
+|-------|------|-------|
+| **master_of_trade** | trading, mt5, ml, noru5, nhits | mt5_adapter, noru5-trading-engine, knowledge-harvester, mql5-articles-master-reference |
+| **noru5-trading-engine** | noru5, ensemble, nhits, trading | master_of_trade, knowledge-harvester, mt5_adapter |
+| **market-scanner** | yahoo-finance, scan, assets | master_of_trade |
+| **mql5-articles-master-reference** | mql5, reference, articles | knowledge-harvester, noru5-trading-engine |
+| **backtest_xauusd_scalping_5m** | backtest, smc, ict, xauusd | master_of_trade, noru5-trading-engine |
+| **adaptive-trader** | multi-strategy, engine, ai | master_of_trade, mt5_adapter, noru5-trading-engine |
+| **wc-prediction-model** | wc2026, prediction, pytorch, fifa | master_of_trade, noru-core-knowledge |
+| **mt5-mcp-integration** | mt5, mcp, claude, ai, integration | master_of_trade, mt5_adapter, native-mcp |
+| **noru-daily-learning** | cron, trading, learning, forums, report | mql5-articles-master-reference, url_fetch_troubleshooting |
+| **mql5-two-sided-breakout-strategy** | mql5, trading, breakout, xauusd, atr | mind-map-cognition, self-evolution, noru-core-knowledge, master_of_trade |
+| **mql5-martingale-grid-risk** | mql5, trading, martingale, grid, xauusd, risk | mind-map-cognition, self-evolution, noru-core-knowledge, master_of_trade |
+| **mql5-regime-classification** | mql5, trading, regime, classification, overfitting | mind-map-cognition, self-evolution, noru-core-knowledge, master_of_trade |
+| **mql5-basket-risk-management** | mql5, trading, basket, risk, management | mind-map-cognition, self-evolution, noru-core-knowledge, master_of_trade |
+| **mt5-live-analysis** | mt5, live, analysis, trading | master_of_trade, noru5-trading-engine |
+| **smc-ict-live-trading** | smc, ict, live, trading, xauusd | master_of_trade, noru5-trading-engine, mt5_adapter |
+| **xauusd_smc_mcp** | xauusd, smc, ict, mcp, tv | master_of_trade, mt5-adapter, native-mcp |
+| **trading-compounding-tracker** | compounding, risk-management, journal, plan-tracking | master_of_trade |
+| **smc** | smc, analysis, cache, xauusd | smc-reload, smc-analysis-daemon, master_of_trade |
+| **smc-reload** | smc, reload, mt5, cache | smc, smc-analysis-daemon, mt5_adapter |
+| **smc-analysis-daemon** | smc, daemon, cron, cache | smc-reload, smc, mt5_adapter |
+
+## Domain: MARKET DATA (3 skills)
+| Skill | Tags | Edges |
+|-------|------|-------|
+| **OpenMobius-skill** | ict, smc, trading, market-data | noru5-trading-engine, knowledge-harvester |
+| **market-db-mt5** | mt5, market-data, csv, database | mt5_adapter, master_of_trade, noru5-trading-engine |
+| **xauusdc-all-daemon** | xauusdc, mt5, timeframes, daemon | smc-reload, market-db-mt5 |
+
+## Domain: TRADING ENGINE (1 skill)
+| Skill | Tags | Edges |
+|-------|------|-------|
+| **mt5_adapter** | mt5, connector, order | master_of_trade, noru5-trading-engine |
+
+## Domain: COGNITIVE ARCHITECTURE (5 skills)
+| Skill | Tags | Edges |
+|-------|------|-------|
+| **mind-map-cognition** | cognition, association, schema | identity-noru, self-evolution, noru-core-knowledge |
+| **identity-noru** | identity, self, core, noru | mind-map-cognition, noru-core-knowledge, self-evolution |
+| **self-evolution** | evolution, consolidate, prune | identity-noru, mind-map-cognition, noru-core-knowledge |
+| **noru-core-knowledge** | knowledge-base, config, facts | identity-noru, mind-map-cognition, master_of_trade |
+| **network-audit-log** | audit, documentation, network, cross-reference | mind-map-cognition, identity-noru |
+
+## Domain: DATA SCIENCE (4 skills)
+| Skill | Tags | Edges |
+|-------|------|-------|
+| **image-recognition** | vision, analyze | comfyui |
+| **jupyter-live-kernel** | jupyter, notebook, python | data-science |
+| **cloudflare-bypass-scraping** | cloudflare, bypass, scraping, bot-protection, turnstile | url_fetch_troubleshooting |
+| **defuddle** | extraction, markdown, web, content | url_fetch_troubleshooting |
+
+## Domain: COMMUNICATION (1 skill)
+| Skill | Tags | Edges |
+|-------|------|-------|
+| **user-preferences** | preferences, communication, style | communication |
+
+## Domain: DEV / SOFTWARE DEVELOPMENT (21 skills)
+| Skill | Tags | Edges |
+|-------|------|-------|
+| **systematic-debugging** | debug, error, fix | windows-terminal, node-inspect-debugger, writing-plans |
+| **test-driven-development** | tdd, test, red-green | writing-plans, spike |
+| **writing-plans** | plan, design, impl | subagent-driven-development, spike |
+| **spike** | experiment, validate | writing-plans, plan |
+| **plan** | plan, markdown | writing-plans, spike |
+| **subagent-driven-development** | subagent, delegate | writing-plans, github-pr-workflow |
+| **requesting-code-review** | review, security, quality | github-code-review |
+| **node-inspect-debugger** | node, debug, chrome-devtools | systematic-debugging |
+| **hermes-agent-skill-authoring** | skill, author, frontmatter | self-evolution, mind-map-cognition |
+| **adaptive-trader** | engine, multi-strategy, mt5 | master_of_trade, mt5_adapter |
+| **debugging-hermes-tui-commands** | debug, tui, hermes | hermes-agent |
+| **ruby-native-gems-windows** | ruby, gem, windows | windows-terminal |
+| **simplify-code** | code-review, cleanup, refactor | requesting-code-review, test-driven-development, plan |
+| **nextjs-rsc-payload-regex** | nextjs, rsc, regex, payload | debugging-hermes-tui-commands |
+| **streaming-site-scraper** | streaming, scraper, video, cloudflare | cloudflare-bypass-scraping, debugging-hermes-tui-commands |
+| **inspecting-hermes-desktop-dom** | dom, css, cdp, desktop, inspect | hermes-agent, hermes-desktop-plugins |
+| **cctv-monitor-alert** | cctv, hikvision, alert | cctv-object-detection |
+| **cctv-object-detection** | yolo, detection, object | cctv-monitor-alert |
+| **hikvision-camera-control** | hikvision, camera, stream | cctv-monitor-alert |
+| **dogfood** | qa, testing, browser | systematic-debugging |
+| **codebase-memory** | graph, codebase, structural, queries | github-code-review, hermes-agent-skill-authoring |
+
+## Domain: DEVOPS (5 skills)
+| Skill | Tags | Edges |
+|-------|------|-------|
+| **kanban-orchestrator** | kanban, orchestrator, decomposition | kanban-worker, kanban-codex-lane |
+| **kanban-worker** | kanban, worker, pitfalls | kanban-orchestrator |
+| **sdlc-review** | kanban, review, quality, verification | kanban-orchestrator, kanban-worker |
+| **webhook-subscriptions** | webhook, subscriptions, event-driven | hermes-agent |
+| **windows-terminal** | windows, terminal, powershell, pty | systematic-debugging, ruby-native-gems-windows, openvpn-windows-setup |
+
+## Domain: CREATIVE (21 skills)
+| Skill | Tags | Edges |
+|-------|------|-------|
+| **architecture-diagram** | svg, diagram, dark | excalidraw |
+| **ascii-art** | ascii, pyfiglet, cowsay | ascii-video |
+| **ascii-video** | ascii, video, gif | ascii-art |
+| **baoyu-article-illustrator** | article, illustration | baoyu-comic, baoyu-infographic |
+| **baoyu-comic** | comic, knowledge, manga | baoyu-article-illustrator |
+| **baoyu-infographic** | infographic, 信息图 | baoyu-article-illustrator |
+| **claude-design** | design, html, artifact | sketch |
+| **comfyui** | comfyui, image, video | image-recognition |
+| **design-md** | design, token, spec | creative |
+| **excalidraw** | excalidraw, diagram, hand-drawn | mind-map-cognition, architecture-diagram |
+| **humanizer** | humanize, text, rewrite | creative |
+| **ideation** | ideas, brainstorming | creative |
+| **manim-video** | animation, math, 3b1b | creative |
+| **p5js** | p5js, generative, art | creative |
+| **pixel-art** | pixel, retro, palette | creative |
+| **popular-web-designs** | design-systems, css, html | sketch, claude-design |
+| **pretext** | text-layout, ascii, generative | ascii-art |
+| **sketch** | mockup, html, prototype | claude-design |
+| **songwriting-and-ai-music** | songwriting, suno, ai-music | heartmula |
+| **touchdesigner-mcp** | touchdesigner, visuals, mcp | comfyui |
+| **json-canvas** | canvas, json, visual, mindmap, obsidian | excalidraw, mind-map-cognition |
+
+## Domain: GITHUB (8 skills)
+| Skill | Tags | Edges |
+|-------|------|-------|
+| **github-auth** | auth, gh, ssh | github-pr-workflow |
+| **github-pr-workflow** | pr, branch, ci | github-code-review, subagent-driven-development |
+| **github-code-review** | review, pr, diff | requesting-code-review, github-pr-workflow |
+| **github-issues** | issues, triage, label | github-pr-workflow |
+| **github-repo-management** | repo, clone, fork | github-auth |
+| **codebase-inspection** | pygount, loc, langs | github-code-review |
+| **github-issue-to-pr** | issue, pr, workflow | github-pr-workflow, github-issues |
+| **github** | github, auth, gh, ssh | github-auth, github-code-review, github-issue-to-pr, github-issues, github-pr-workflow, github-repo-management, codebase-inspection |
+
+## Domain: ML / AI (5 skills)
+| Skill | Tags | Edges |
+|-------|------|-------|
+| **dspy** | dspy, declarative, lm | huggingface-hub |
+| **huggingface-hub** | huggingface, hf, models | llama-cpp |
+| **llama-cpp** | llama, gguf, inference | huggingface-hub |
+| **weights-and-biases** | wandb, experiment, log | dspy |
+| **segment-anything-model** | multimodal, image-segmentation, computer-vision, sam, zero-shot | huggingface-hub |
+
+## Domain: NETWORKING (3 skills)
+| Skill | Tags | Edges |
+|-------|------|-------|
+| **lan-network-scanner** | lan, scan, hosts | networking |
+| **networking** | network, utilities | lan-network-scanner |
+| **telegram-gateway-troubleshooting** | telegram, gateway, media | hermes-agent |
+
+## Domain: MEDIA (5 skills)
+| Skill | Tags | Edges |
+|-------|------|-------|
+| **gif-search** | gif, tenor, search | spotify |
+| **heartmula** | music, song, suno | songwriting-and-ai-music |
+| **songsee** | audio, spectrogram, mfcc | media |
+| **spotify** | spotify, play, queue | media |
+| **youtube-content** | youtube, transcript, summary | media |
+
+## Domain: RESEARCH (13 skills)
+| Skill | Tags | Edges |
+|-------|------|-------|
+| **arxiv** | arxiv, paper, search | blogwatcher |
+| **blogwatcher** | blog, rss, feed | knowledge-harvester |
+| **llm-wiki** | wiki, knowledge-base | mind-map-cognition |
+| **polymarket** | polymarket, prediction | research |
+| **blocked-page-recovery** | blocked, page, recovery, waf | url_fetch_troubleshooting |
+| **competitor-news-monitor** | competitor, news, monitor | blogwatcher, knowledge-harvester |
+| **grounded-citations** | citations, grounding, verification | arxiv, blogwatcher |
+| **tinyfish-authenticated** | web-automation, browser, authenticated, vault | hermes-agent |
+| **tinyfish-automation** | web-automation, browser, goal-driven | hermes-agent |
+| **tinyfish-browser** | browser, cdp, stealth, chrome | hermes-agent, claude-code, codex |
+| **tinyfish-monitor** | monitor, web, cron, alert | hermes-agent |
+| **tinyfish-research** | research, web, search, fetch | hermes-agent, blogwatcher |
+| **tinyfish-web** | tool-selection, web, tinyfish | hermes-agent |
+
+## Domain: PRODUCTIVITY (22 skills)
+| Skill | Tags | Edges |
+|-------|------|-------|
+| **airtable** | airtable, rest, api | productivity |
+| **document-to-action-items** | document, action-items, extraction | productivity |
+| **docx** | docx, word, template | pdf, powerpoint |
+| **google-workspace** | gmail, calendar, drive, docs, sheets | productivity |
+| **linear** | linear, graphql, issues | productivity |
+| **maps** | geocode, pois, routes, timezones | productivity |
+| **meeting-action-items** | meeting, action-items, decisions | document-to-action-items |
+| **multi-level-index** | index, hierarchical, memory | productivity |
+| **nano-pdf** | pdf, edit, prompt | pdf, ocr-and-documents |
+| **notion** | notion, api, pages, databases | productivity |
+| **ocr-and-documents** | ocr, pdf, extract, annotate | pdf, nano-pdf |
+| **pdf** | pdf, create, read, merge, fill, secure | docx, powerpoint, ocr-and-documents |
+| **petdex** | petdex, mascot, animation | productivity |
+| **powerpoint** | pptx, deck, python-pptx | docx, pdf |
+| **product-price-monitor** | price, monitor, alert | productivity |
+| **screenshot-desktop** | screenshot, desktop, windows, telegram | productivity |
+| **session-librarian** | session, librarian, organize | productivity |
+| **teams-meeting-pipeline** | teams, meeting, graph, replay | productivity |
+| **weekly-review-planning** | weekly, review, planning, commitments | productivity |
+| **xlsx** | excel, spreadsheet, xlsx, csv, openpyxl | docx, pdf, powerpoint |
+| **box** | box, cloud-storage, collaboration, metadata, content-extraction, cli, sdk | google-workspace |
+| **microsoft-office** | office, docx, xlsx, pptx | docx, xlsx, pdf |
+
+## Domain: SECURITY (4 skills)
+| Skill | Tags | Edges |
+|-------|------|-------|
+| **awesome-ai-hacking-agents** | hacking, pentest, ai | windows-pentesting |
+| **ai-hacking-team** | hacking, pentest, ai, kali, multi-agent | awesome-ai-hacking-agents, windows-pentesting, networking |
+| **ai_hacking_core** | hacking, core, architecture, red-teaming | awesome-ai-hacking-agents, windows-pentesting, ai-hacking-team |
+| **hf-agent-intrusion-july2026** | security, incident, analysis, hf | ai_hacking_core, security-incident-research |
+
+## Domain: CCTV (3 skills)
+| Skill | Tags | Edges |
+|-------|------|-------|
+| **cctv-monitor-alert** | cctv, hikvision, alert | cctv-object-detection |
+| **cctv-object-detection** | yolo, detection, object | cctv-monitor-alert |
+| **hikvision-camera-control** | hikvision, camera, stream | cctv-monitor-alert |
+
+## Domain: SPORTS (4 skills)
+| Skill | Tags | Edges |
+|-------|------|-------|
+| **football-match-prediction** | football, prediction, xg, understat | live-match-data, sports-scores |
+| **football-match-enhanced** | football, prediction, live, enhanced | football-match-prediction, live-match-data |
+| **live-match-data** | espn, live, scores, football | football-match-prediction, sports-scores |
+| **sports-scores** | sports, football, live | media |
+
+## Domain: KNOWLEDGE / MQL5 (4 skills)
+| Skill | Tags | Edges |
+|-------|------|-------|
+| **circle-search-algorithm-csa** | mql5, algorithm, optimization | mql5-articles-master-reference |
+| **metatrader-5-machine-learning-blueprint-part-5-seq** | mql5, ml, bootstrapping | mql5-articles-master-reference |
+| **reimagining-classic-strategies-part-17-modelling-t** | mql5, strategy, indicators | mql5-articles-master-reference |
+| **csv-data-analysis-series** | mql5, csv, data-analysis, python | mql5-articles-master-reference, jupyter-live-kernel |
+
+## Domain: AUTONOMOUS AI AGENTS (8 skills)
+| Skill | Tags | Edges |
+|-------|------|-------|
+| **claude-code** | claude, coding, cli | codex, opencode |
+| **codex** | codex, coding, cli | claude-code, opencode |
+| **computer-use** | computer-use, desktop, automation | hermes-agent, claude-code, codex |
+| **hermes-agent** | hermes, configure, agent | noru-core-knowledge |
+| **kanban-codex-lane** | kanban, codex, lane | kanban-orchestrator, codex |
+| **opencode** | opencode, coding, cli | claude-code, codex |
+| **merge-reconciler** | merge, reconciler, conflict | hermes-agent, kanban-orchestrator |
+| **hermes-silent-failure-diagnosis** | hermes, diagnosis, logs, provider, 401, telegram, gateway | hermes-agent, telegram-gateway-troubleshooting, self-evolution |
+
+## Domain: RED-TEAMING (1 skill)
+| Skill | Tags | Edges |
+|-------|------|-------|
+| **godmode** | jailbreak, llm, parseltongue | security |
+
+## Domain: GAMING (2 skills)
+| Skill | Tags | Edges |
+|-------|------|-------|
+| **pokemon-player** | pokemon, emulator, gameboy | gaming |
+| **chess-engine** | chess, engine, stockfish, analysis, training, puzzle, strategy | pokemon-player, planning, project_roadmap, master_of_trade |
+
+## Domain: SMART HOME (1 skill)
+| Skill | Tags | Edges |
+|-------|------|-------|
+| **openhue** | philips-hue, lights, scenes | smart-home |
+
+## Domain: EMAIL (2 skills)
+| Skill | Tags | Edges |
+|-------|------|-------|
+| **himalaya** | email, imap, smtp | productivity |
+| **email-inbox-triage** | email, triage, inbox | himalaya, productivity |
+
+## Domain: NOTE-TAKING (4 skills)
+| Skill | Tags | Edges |
+|-------|------|-------|
+| **obsidian** | obsidian, notes, vault | notion, llm-wiki |
+| **obsidian-bases** | obsidian, bases, views, filters, formulas, database | obsidian, obsidian-markdown, obsidian-cli |
+| **obsidian-cli** | obsidian, cli, vault, plugin, theme, dev | obsidian, obsidian-bases, obsidian-markdown |
+| **obsidian-markdown** | obsidian, markdown, wikilinks, callouts, embeds, properties | obsidian, obsidian-bases, obsidian-cli |
+
+## Domain: MCP (1 skill)
+| Skill | Tags | Edges |
+|-------|------|-------|
+| **native-mcp** | mcp, client, tools | hermes-agent |
+
+## Domain: QA / TESTING (1 skill)
+| Skill | Tags | Edges |
+|-------|------|-------|
+| **dogfood** | qa, testing, browser | systematic-debugging |
+
+## Domain: HERMES DESKTOP PLUGINS (1 skill)
+| Skill | Tags | Edges |
+|-------|------|-------|
+| **hermes-desktop-plugins** | desktop, plugins, ui, panes | inspecting-hermes-desktop-dom |
+
+## Domain: OTHER / UTILITY (4 skills)
+| Skill | Tags | Edges |
+|-------|------|-------|
+| **sports-scores** | sports, football, live | media |
+| **dogfood** | qa, testing, browser | systematic-debugging |
+| **useful-skills** | skills, discovery | mind-map-cognition |
+| **yuanbao** | yuanbao, tencent, group-chat | media |
 
 ---
 
-## 📊 TRADING (7 skills) — PRIMARY DOMAIN
+## Summary
+| Domain | Count |
+|--------|-------|
+| AUTONOMOUS AI AGENTS | 8 |
+| CCTV | 3 |
+| COGNITIVE ARCHITECTURE | 5 |
+| COMMUNICATION | 1 |
+| CREATIVE | 21 |
+| DATA SCIENCE | 4 |
+| DEV / SOFTWARE DEVELOPMENT | 21 |
+| DEVOPS | 5 |
+| EMAIL | 2 |
+| GAMING | 2 |
+| GITHUB | 8 |
+| HERMES DESKTOP PLUGINS | 1 |
+| KNOWLEDGE / MQL5 | 4 |
+| MARKET DATA | 3 |
+| MCP | 1 |
+| MEDIA | 5 |
+| ML / AI | 5 |
+| NETWORKING | 3 |
+| NOTE-TAKING | 4 |
+| OTHER / UTILITY | 4 |
+| PRODUCTIVITY | 22 |
+| QA / TESTING | 1 |
+| RED-TEAMING | 1 |
+| RESEARCH | 13 |
+| SECURITY | 4 |
+| SMART HOME | 1 |
+| SPORTS | 4 |
+| TRADING | 20 |
+| TRADING ENGINE | 1 |
+| **Total rows** | **177** |
 
-| Skill | Tags | Related Skills |
-|-------|------|---------------|
-| **master_of_trade** | mt5, nhits, ensemble, ml, trading-engine, xauusd | mt5_adapter, smart_money, ensemble, mql5-articles, OpenMobius, backtesting-harness, project_roadmap |
-| **mt5_adapter** | mt5, connector, metaquotes, python-sdk | master_of_trade, smart_money, process-watchdog |
-| **smart_money** | smc, ict, pattern-detector, market-structure | OpenMobius, mql5-articles, master_of_trade, ensemble |
-| **ensemble** | signal-aggregation, weighting, strategy-combine | master_of_trade, smart_money, backtesting-harness |
-| **mql5-articles-master-reference** | mql5, knowledge-base, ea, smc, ml, neural | master_of_trade, OpenMobius, smart_money, pine-script, tradingview-strategy |
-| **OpenMobius-skill** | ict, smc, market-structure, bos, choch, fvg, orderblock | smart_money, mql5-articles, master_of_trade |
-| **tradingview-strategy** | pine-script, tradingview, indicator, strategy | mql5-articles, master_of_trade, pine-script |
-| **pine-script** | pine-script-v6, tradingview, strategy-dev | tradingview-strategy, mql5-articles |
-| **backtesting-harness** | backtest, csv-data, nor5, validation | ensemble, master_of_trade, smart_money |
-| **legacy-data-ingestion** | noru-v4, csv, market-data | backtesting-harness, master_of_trade |
-
----
-
-## 🔧 SOFTWARE DEVELOPMENT (11 skills)
-
-| Skill | Tags | Related Skills |
-|-------|------|---------------|
-| **systematic-debugging** | debug, root-cause, error-fix, 4-phase | process-watchdog, node-inspect, windows-terminal, writing-plans |
-| **test-driven-development** | tdd, testing, red-green-refactor | writing-plans, spike, subagent-driven-development |
-| **writing-plans** | planning, markdown, implementation | plan, spike, tdd, subagent-driven-development |
-| **plan** | plan-mode, no-exec, structured | writing-plans, spike |
-| **spike** | experiment, prototype, validate | plan, writing-plans, tdd, subagent-driven-development |
-| **subagent-driven-development** | delegation, parallel, review | tdd, writing-plans, spike, code-review |
-| **requesting-code-review** | security-scan, quality-gates, pre-commit | github-pr-workflow, subagent-driven-development |
-| **codebase-inspection** | pygount, loc, languages | github-repo-management |
-| **node-inspect-debugger** | nodejs, inspect, debugging | systematic-debugging |
-| **hermes-agent-skill-authoring** | skill-md, frontmatter, validator | hermes-agent, mind-map-cognition |
-| **ruby-native-gems-windows** | ruby, windows, gcc, gem-compile | portable-dev-tools-windows |
-
----
-
-## ⚙️ DEVOPS (8 skills)
-
-| Skill | Tags | Related Skills |
-|-------|------|---------------|
-| **windows-terminal** | windows, powershell, pty, process | process-watchdog, portable-dev-tools, networking |
-| **process-watchdog** | monitor, restart, background, powershell | windows-terminal, systematic-debugging, master_of_trade |
-| **portable-dev-tools-windows** | portable, no-admin, windows-tools | windows-terminal, ruby-native-gems |
-| **webhook-subscriptions** | webhook, event-driven, automation | cronjob, subagent-driven-development |
-| **dashboard-launch** | nor5, dashboard, startup | master_of_trade, project_roadmap |
-| **kanban-orchestrator** | kanban, orchestration, decomposition | kanban-worker, kanban-codex-lane, subagent-driven-development |
-| **kanban-worker** | kanban, pitfalls, lifecycle | kanban-orchestrator |
-| **kanban-codex-lane** | kanban, codex, isolation | kanban-orchestrator, codex |
-
----
-
-## 🤖 AUTONOMOUS AI AGENTS (5 skills)
-
-| Skill | Tags | Related Skills |
-|-------|------|---------------|
-| **hermes-agent** | hermes, config, setup, cli, gateway | mind-map-cognition, subagent-driven-development, native-mcp |
-| **claude-code** | claude-code, cli, delegation | codex, opencode, subagent-driven-development |
-| **codex** | openai-codex, cli, delegation | claude-code, kanban-codex-lane |
-| **opencode** | opencode, cli, pr-review | claude-code, codex |
-| **native-mcp** | mcp, client, tools, registry | hermes-agent, subagent-driven-development |
-
----
-
-## 🎨 CREATIVE (15 skills)
-
-| Skill | Tags | Related Skills |
-|-------|------|---------------|
-| **excalidraw** | diagram, hand-drawn, json | architecture-diagram, mind-map-cognition |
-| **architecture-diagram** | svg, diagram, infra | excalidraw, popular-web-designs |
-| **sketch** | html-mockup, prototype, design | claude-design, popular-web-designs |
-| **claude-design** | html-artifact, landing-page | sketch, popular-web-designs |
-| **popular-web-designs** | design-systems, css, html | claude-design, sketch |
-| **ascii-art** | pyfiglet, boxes, ascii | ascii-video, pretext |
-| **ascii-video** | video-to-ascii, terminal-art | ascii-art |
-| **pretext** | dom-free-layout, text-art | ascii-art, p5js |
-| **p5js** | gen-art, shader, interactive | pretext, claude-design |
-| **pixel-art** | nes, gameboy, retro-palette | ascii-art |
-| **manim-video** | animation, math-video, 3b1b | p5js |
-| **baoyu-article-illustrator** | article-illustration, style-palette | baoyu-comic, baoyu-infographic |
-| **baoyu-comic** | knowledge-comic, educational | baoyu-article-illustrator, baoyu-infographic |
-| **baoyu-infographic** | infographic, visualization | baoyu-article-illustrator, baoyu-comic |
-| **comfyui** | image-gen, video-gen, workflow | image_generate, touchdesigner-mcp |
-| **touchdesigner-mcp** | touchdesigner, visual, realtime | comfyui |
-| **design-md** | token-spec, design-doc | writing-plans |
-| **humanizer** | humanize-text, anti-ai | songwriting-and-ai-music |
-| **songwriting-and-ai-music** | songwriting, suno, lyrics | humanizer, heartmula |
-| **ideation** | creative-constraints, ideas | spike, plan |
-
----
-
-## 📁 GITHUB (6 skills)
-
-| Skill | Tags | Related Skills |
-|-------|------|---------------|
-| **github-pr-workflow** | pr, branch, commit, ci, merge | github-code-review, github-issues, tdd |
-| **github-code-review** | code-review, pr-diff, inline-comment | github-pr-workflow, requesting-code-review |
-| **github-issues** | issues, triage, label, assign | github-pr-workflow |
-| **github-auth** | github-auth, token, ssh | github-repo-management |
-| **github-repo-management** | clone, fork, repo, release | github-auth, github-pr-workflow |
-| **codebase-inspection** | pygount, loc, languages | github-repo-management |
-
----
-
-## 📊 DATA SCIENCE (4 skills)
-
-| Skill | Tags | Related Skills |
-|-------|------|---------------|
-| **jupyter-live-kernel** | jupyter, python, interactive | backtesting-harness, huggingface-hub |
-| **image-recognition** | vision, analyze, image | segment-anything, comfyui, ocr-and-documents |
-| **backtesting-harness** | backtest, csv, validation | ensemble, master_of_trade, jupyter-live-kernel |
-| **legacy-data-ingestion** | noru-v4, csv, market-data | backtesting-harness |
-
----
-
-## 🧪 MLOPS (5 skills)
-
-| Skill | Tags | Related Skills |
-|-------|------|---------------|
-| **huggingface-hub** | hf-cli, models, datasets | llama-cpp, weights-and-biases |
-| **llama-cpp** | gguf, local-inference, quantization | huggingface-hub, dspy |
-| **weights-and-biases** | w-and-b, experiments, sweeps | huggingface-hub, dspy |
-| **dspy** | dspy, lm-programs, rag, optimization | llama-cpp, weights-and-biases, jupyter-live-kernel |
-| **segment-anything-model** | sam, segmentation, mask | image-recognition |
-
----
-
-## 🔬 RESEARCH (5 skills)
-
-| Skill | Tags | Related Skills |
-|-------|------|---------------|
-| **arxiv** | papers, academic, search | blogwatcher, llm-wiki |
-| **blogwatcher** | rss, blogs, monitoring | arxiv, webhook-subscriptions |
-| **llm-wiki** | knowledge-base, markdown, wiki | obsidian, notion |
-| **polymarket** | prediction-markets, crypto | blogwatcher |
-| **indonesian-marine-data** | marine, fisheries, indonesia | maps |
-
----
-
-## 📝 NOTE-TAKING & PRODUCTIVITY (10 skills)
-
-| Skill | Tags | Related Skills |
-|-------|------|---------------|
-| **obsidian** | vault, markdown, notes | notion, llm-wiki, ocr-and-documents |
-| **notion** | api, database, pages | obsidian, llm-wiki |
-| **ocr-and-documents** | pdf, text-extraction | image-recognition, nano-pdf |
-| **nano-pdf** | pdf-edit, pdf-manipulation | ocr-and-documents |
-| **powerpoint** | pptx, slides, presentation | claude-design |
-| **google-workspace** | gmail, calendar, drive, sheets | airtable, notion |
-| **airtable** | rest-api, records, crud | google-workspace, notion |
-| **linear** | issues, projects, teams | github-issues, notion |
-| **maps** | geocode, routing, osm | indonesian-marine-data |
-| **screenshot-desktop** | screenshot, desktop, windows | telegram-media-send |
-
----
-
-## 📱 MEDIA & COMMUNICATION (7 skills)
-
-| Skill | Tags | Related Skills |
-|-------|------|---------------|
-| **telegram-media-send** | telegram, media, send | screenshot-desktop, ocr-and-documents |
-| **telegram-gateway-troubleshooting** | gateway, telegram, troubleshoot | hermes-gateway-api-server, hermes-agent |
-| **youtube-content** | youtube, transcript, summary | blogwatcher, spotify |
-| **spotify** | music, playlist, queue | songwriting-and-ai-music |
-| **gif-search** | tenor, gif, search | telegram-media-send |
-| **heartmula** | song-generation, lyrics | songwriting-and-ai-music |
-| **songsee** | audio-spectrogram, features | heartmula, spotify |
-| **himayala** | email, imap, smtp | google-workspace |
-
----
-
-## 🌐 NETWORKING & SECURITY (5 skills)
-
-| Skill | Tags | Related Skills |
-|-------|------|---------------|
-| **networking** | lan, scanning, dns | windows-terminal, lan-network-scanner |
-| **lan-network-scanner** | bash, powershell, discovery | networking, network-device-admin |
-| **network-device-admin** | web-admin, router, config | networking, windows-terminal |
-| **windows-pentesting** | metasploit, pentest, windows | networking, portable-dev-tools |
-| **godmode** | jailbreak, red-teaming | — |
-
----
-
-## 🏠 SMART HOME & CCTV (4 skills)
-
-| Skill | Tags | Related Skills |
-|-------|------|---------------|
-| **openhue** | philips-hue, lights, scenes | windows-terminal |
-| **cctv-monitor-alert** | hikvision, yolo, detection | cctv-object-detection, telegram-media-send |
-| **cctv-object-detection** | yolo, object-detection | cctv-monitor-alert, image-recognition |
-| **hikvision-camera-control** | hikvision, zerocchannel, video | cctv-monitor-alert, cctv-object-detection |
-
----
-
-## 📋 PLANNING (4 skills)
-
-| Skill | Tags | Related Skills |
-|-------|------|---------------|
-| **project_roadmap** | roadmap, plan, nor5 | master_of_trade, nor5-phase-two-plan, writing-plans |
-| **nor5-phase-two-plan** | phase2, nor5, tasks | project_roadmap, nor5-execution-script, backtesting-harness |
-| **nor5-execution-script** | execute, parallel, subagent | nor5-phase-two-plan, subagent-driven-development |
-| **plan** | plan-mode, no-exec | writing-plans, spike |
-
----
-
-## 🧠 COGNITIVE ARCHITECTURE (1 skill — META)
-
-| Skill | Tags | Related Skills |
-|-------|------|---------------|
-| **mind-map-cognition** | cognition, memory, association, schema, spreading-activation | ALL SKILLS (meta-skill) |
-
----
-
-## 🛠️ UTILITY (3 skills)
-
-| Skill | Tags | Related Skills |
-|-------|------|---------------|
-| **dogfood** | qa, bug-finding, evidence | systematic-debugging, github-issues |
-| **url_fetch_troubleshooting** | web-resource, retry, fetch | hermes-agent |
-| **useful-skills** | skill-library, discovery | hermes-agent-skill-authoring |
-| **yuanbao** | messaging, group, mention | telegram-media-send |
-
----
-
-## Spreading Activation Flowchart
-
-```
-KEYWORD "XAUUSD M5"
-    │
-    ▼
-PRIMARY ACTIVATION (kedalaman 1)
-    ├── master_of_trade ────────→ mt5_adapter
-    ├── OpenMobius-skill ───────→ smart_money
-    ├── mql5-articles-master-ref → ensemble
-    └── memory: winrate, credentials
-            │
-            ▼
-SECONDARY ACTIVATION (kedalaman 2)
-    ├── smart_money ──→ OpenMobius
-    ├── ensemble ────→ backtesting-harness
-    ├── mt5_adapter ─→ process-watchdog
-    └── memory: trading session logs
-            │
-            ▼
-TERTIARY ACTIVATION (jika perlu)
-    ├── project_roadmap (konteks jangka panjang)
-    ├── systematic-debugging (jika error)
-    └── session_search (historis)
-```
-
----
-
-*Graph terakhir diperbarui: 29 Mei 2026*
-*Total edge count: ~250+ asosiasi*
+**Note**: 177 rows = 170 unique skills + 7 cross-domain duplicates, 29 domains. Cross-domain dups are intentional.
