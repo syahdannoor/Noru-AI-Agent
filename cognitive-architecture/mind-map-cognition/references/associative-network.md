@@ -1,10 +1,11 @@
 # 🕸️ Associative Network — Cross-Reference Graph
 
-Last updated: 2026-11-11
-Total skills: 170
-Total rows: 177
+Last updated: 2026-11-12
+Total skills: 172
+Total rows: 179
 Transitions: ... → v1.35 (184→190 unique, 172 rows) → v1.36 (190→169 unique, 176 rows; table rebuilt + 5 skills added)
 Status: REBUILT 2026-11-11 — table rows had been mangled by repeated fuzzy patches (leading pipes stripped from data rows, stacked pipes on summary rows). Normalized via `self-evolution/scripts/normalize_network.py`: 176 rows, 169 unique, 29 non-empty domains. Empty sections (PLANNING, MESSAGING, WIKIPEDIA) dropped. Added smc, smc-reload, smc-analysis-daemon (TRADING), xauusdc-all-daemon (MARKET DATA), microsoft-office (PRODUCTIVITY). 15 loose harvester .md artifacts (github-*, wikipedia-main-page) moved to `.archive/loose-md-2026-11-11/`. Cross-ref verified: 0 missing, 0 dead.
+
 
 
 
@@ -66,7 +67,7 @@ Status: REBUILT 2026-11-11 — table rows had been mangled by repeated fuzzy pat
 |-------|------|-------|
 | **user-preferences** | preferences, communication, style | communication |
 
-## Domain: DEV / SOFTWARE DEVELOPMENT (21 skills)
+## Domain: DEV / SOFTWARE DEVELOPMENT (22 skills)
 | Skill | Tags | Edges |
 |-------|------|-------|
 | **systematic-debugging** | debug, error, fix | windows-terminal, node-inspect-debugger, writing-plans |
@@ -90,6 +91,7 @@ Status: REBUILT 2026-11-11 — table rows had been mangled by repeated fuzzy pat
 | **hikvision-camera-control** | hikvision, camera, stream | cctv-monitor-alert |
 | **dogfood** | qa, testing, browser | systematic-debugging |
 | **codebase-memory** | graph, codebase, structural, queries | github-code-review, hermes-agent-skill-authoring |
+| **modern-web-guidance** | web, html, css, ui, platform-primitives | hermes-agent, sketch, modern-web-guidance |
 
 ## Domain: DEVOPS (5 skills)
 | Skill | Tags | Edges |
@@ -162,7 +164,7 @@ Status: REBUILT 2026-11-11 — table rows had been mangled by repeated fuzzy pat
 | **spotify** | spotify, play, queue | media |
 | **youtube-content** | youtube, transcript, summary | media |
 
-## Domain: RESEARCH (13 skills)
+## Domain: RESEARCH (14 skills)
 | Skill | Tags | Edges |
 |-------|------|-------|
 | **arxiv** | arxiv, paper, search | blogwatcher |
@@ -178,6 +180,7 @@ Status: REBUILT 2026-11-11 — table rows had been mangled by repeated fuzzy pat
 | **tinyfish-monitor** | monitor, web, cron, alert | hermes-agent |
 | **tinyfish-research** | research, web, search, fetch | hermes-agent, blogwatcher |
 | **tinyfish-web** | tool-selection, web, tinyfish | hermes-agent |
+| **user-chrome-automation** | chrome, browse, browser, authenticated, playwright | tinyfish-browser, blocked-page-recovery, google-workspace |
 
 ## Domain: PRODUCTIVITY (22 skills)
 | Skill | Tags | Edges |
@@ -312,7 +315,7 @@ Status: REBUILT 2026-11-11 — table rows had been mangled by repeated fuzzy pat
 | COMMUNICATION | 1 |
 | CREATIVE | 21 |
 | DATA SCIENCE | 4 |
-| DEV / SOFTWARE DEVELOPMENT | 21 |
+| DEV / SOFTWARE DEVELOPMENT | 22 |
 | DEVOPS | 5 |
 | EMAIL | 2 |
 | GAMING | 2 |
@@ -329,12 +332,12 @@ Status: REBUILT 2026-11-11 — table rows had been mangled by repeated fuzzy pat
 | PRODUCTIVITY | 22 |
 | QA / TESTING | 1 |
 | RED-TEAMING | 1 |
-| RESEARCH | 13 |
+| RESEARCH | 14 |
 | SECURITY | 4 |
 | SMART HOME | 1 |
 | SPORTS | 4 |
 | TRADING | 20 |
 | TRADING ENGINE | 1 |
-| **Total rows** | **177** |
+| **Total rows** | **179** |
 
-**Note**: 177 rows = 170 unique skills + 7 cross-domain duplicates, 29 domains. Cross-domain dups are intentional.
+**Note**: 179 rows = 172 unique skills + 7 cross-domain duplicates, 29 domains. Cross-domain dups are intentional.

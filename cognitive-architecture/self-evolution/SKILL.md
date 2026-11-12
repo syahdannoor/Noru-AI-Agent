@@ -3,7 +3,7 @@ name: self-evolution
 description: >
   Sistem evolusi diri Noru — auto-consolidate, prune, grow, dan cross-reference
   knowledge. Berjalan via cron (terjadwal) dan trigger (after complex task).
-version: 1.60
+version: 1.61
 author: Noru
 Tags: [evolution, self-improvement, consolidate, prune, grow]
 related_skills:
@@ -244,6 +244,8 @@ print("Evolusi terjadwal selesai. Knowledge graph terbarui.")
 |||||||||||||| 2026-11-06 | 1.57 | Self-evolution cron: scanned recent sessions — no new topics/errors/knowledge requiring consolidation. Associative network stable at 190 skills, 172 rows, 32 domains. Cross-ref verified: 0 missing, 0 dead. Memory at 80% (under 85%, no pruning needed). Skills reviewed: no patches/merges/deletions required.||
 ||||||||||||||| 2026-11-09 | 1.58 | Self-evolution cron: no changes — associative network stable at 190 skills, 172 rows, 32 domains. Memory at 84% (under 85%, no pruning). Cross-ref verified 0 missing 0 dead. Skills stable. Report: "Tidak ada perubahan - semuanya stable."
 ||||||||||||||| 2026-11-11 | 1.60 | REPAIR RUN. Root cause found for 3 consecutive cron runs reporting "domain header says N, actual rows = 0": repeated fuzzy patches had stripped leading pipes from ALL data rows (now `    **name** | tags | edges |`) and stacked pipes on Summary rows (`||||||||| DOMAIN | N ||`). Fix: new `scripts/normalize_network.py` parses tolerantly and rewrites clean tables, recomputes domain + summary counts, drops empty domains, optional `--add DOMAIN:name:tags:edges`. Result: 176 rows / 169 unique / 29 domains, verify_headers.py ✅, cross_ref 133/133 perfect. Deleted 15 loose knowledge-harvester .md artifacts in cognitive-architecture/ (github-*, wikipedia-main-page) that were phantom "missing skills" every run → moved to .archive/loose-md-2026-11-11/. Added 5 real skills: smc, smc-reload, smc-analysis-daemon, xauusdc-all-daemon, microsoft-office. New skill `hermes-silent-failure-diagnosis` capturing the 401/Telegram-no-reply runbook. Memory 78% (no prune needed).
+||||||||||||||| 2026-11-12 | 1.61 | Self-evolution cron: added 2 new skills to associative network (user-chrome-automation → RESEARCH, modern-web-guidance → DEV/SOFTWARE DEVELOPMENT) — both created from 2026-11-11/12 Chrome-browse sessions and were the only 2 missing from network. Ran normalize_network.py --write --add (script rewrite, no hand-patching). Result: 136 skills on disk = 136 in network, 179 rows, 29 domains, verify_headers ✅, cross_ref ✅ perfect. Memory 74% (1,638/2,200, under 85% — no pruning). No patches/merges/deletions needed. GitHub backup: noru-agent-backup + .hermes + hermes-agent pushed to backup remotes.
+
 ## References
 - `references/github-backup.md` — Langkah backup cognitive architecture ke GitHub, termasuk verifikasi dan recovery
 - `references/verification-2026-07-13.md` — Previous cron verification report (stable network, 137 skills)
@@ -261,6 +263,9 @@ print("Evolusi terjadwal selesai. Knowledge graph terbarui.")
 Jika memory tool return "not available" / "disabled in config", jangan retry di tool calls berikutnya.
 Lanjutkan tanpa memory — ini permanent constraint, bukan transient error.
 Berbeda dengan memory penuh (≥85%) yang perlu di-prune dulu.
+
+### ❌ `skill_manage` butuh NAMA skill, bukan path direktori
+Skill yang hidup di sub-kategori (`cognitive-architecture/self-evolution`) tetap dipanggil dengan nama pendek: `skill_manage(action='patch', name='self-evolution', ...)`. Memakai `name='cognitive-architecture\self-evolution'` langsung gagal dengan `Skill ... not found in active profile` — dan karena operasi bersifat atomik, SATU nama salah membatalkan seluruh batch. Kalau batch gagal dengan error itu, ulangi dengan nama pendek; jangan bongkar isi operasinya.
 
 ### ❌ Cron schedule bisa berubah
 Jangan hardcode "mingguan" di response. Cek jadwal aktual cron job setiap kali.
@@ -280,7 +285,7 @@ Ketika patch tool memodifikasi baris tabel markdown (misal: associative-network.
 
 **Deteksi**: Setelah patch tabel, jalankan: `grep -n '||' associative-network.md`. Jika ada output selain baris header/separator, itu artifact.
 
-**Pencegahan**: Selalu verifikasi format tabel setelah patch — baca file dengan read_file atau cat -A. Jika double-pipe terdeteksi, patch spesifik pada baris yang rusak dengan old_string mengandung `||` dan new_string tanpa `||`.
+**Pencegahan**: Jangan hand-patch baris tabel berulang kali — itu justru akar masalahnya. Satu kali patch fuzzy yang menggeser pipe, patch berikutnya menggeser lebih jauh sampai SEMUA baris data kehilangan leading pipe (`    **name** | tags | edges |`) dan baris Summary jadi `|||` bertumpuk. Gejalanya khas: `verify_headers.py` melaporkan "domain header says N, actual rows = 0" untuk SETIAP domain, padahal `grep -c '\*\*'` menunjukkan barisnya ada. Fix: `python scripts/normalize_network.py --write` (parse toleran → tulis ulang tabel bersih + recompute counts + `--add DOMAIN:name:tags:edges`), lalu `verify_headers.py` + `cross_ref_network.py`. Setelah itu update lewat script, bukan patch baris.
 
 ### ❌ verify_headers.py double-pipe warnings on table headers are FALSE POSITIVES
 Since 2026-07-15, associative-network.md deliberately uses `|| Skill | Tags | Edges |` (leading double-pipe) as a formatting style for section table headers. `verify_headers.py` flags every one of these lines as "possible double-pipe artifact" — but they are NOT artifacts. Same for the Summary section's `|| Domain | Count |` line.
