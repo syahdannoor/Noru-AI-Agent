@@ -36,16 +36,16 @@ Jangan pernah jawab "sudah backup" tanpa `git log -1`. Repo bisa saja tertinggal
 cp -r "/c/Users/syahd/AppData/Local/hermes/skills/cognitive-architecture/"* \
       "/c/Users/syahd/noru-agent-backup/cognitive-architecture/"
 
-# B. SEMUA skill di luar cognitive-architecture (scope rule)
-#    Backup hanya-cognitive-architecture meninggalkan skill lain tanpa backup.
-#    Skill baru di kategori lain WAJIB dicopy ke path kategori yang sama di repo:
-for d in /c/Users/syahd/AppData/Local/hermes/skills/*/; do
-  cat="$(basename "$d")"
-  [ "$cat" = "cognitive-architecture" ] && continue
-  [ "$cat" = ".archive" ] && continue
-  mkdir -p "/c/Users/syahd/noru-agent-backup/$cat"
-  cp -r "$d"* "/c/Users/syahd/noru-agent-backup/$cat/" 2>/dev/null
+# B. Skill lain: COPY HANYA YANG BARU/BERUBAH (scope rule)
+#    JANGAN loop `cp -r skills/*/` ke repo — tree aktif berisi market-data/
+#    (69 simbol × 8 TF CSV, ±1.5 GB) dan dump docs lain yang bukan skill.
+#    Loop buta = commit 2.700 file / 1,9 juta baris sekali jalan (kejadian 2026-11-12).
+for s in web/modern-web-guidance web/user-chrome-automation; do
+  mkdir -p "/c/Users/syahd/noru-agent-backup/$(dirname "$s")"
+  cp -r "/c/Users/syahd/AppData/Local/hermes/skills/$s" "/c/Users/syahd/noru-agent-backup/$(dirname "$s")/"
 done
+# Verifikasi sebelum commit: `git status --porcelain | wc -l` harus kecil (<100).
+# Kalau ribuan → ada direktori data (market-data/, knowledge/tradingview/docs) ke-sweep.
 ```
 
 Skill yang dibuat di luar tree cognitive-architecture (mis. `autonomous-ai-agents/`, `trading/`, `github/`) adalah penyebab paling sering commit "backup selesai" padahal skill baru tidak ikut — selalu bandingkan `ls` repo vs `ls` skills dir sebelum commit.
