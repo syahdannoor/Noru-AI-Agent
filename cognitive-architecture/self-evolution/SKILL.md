@@ -3,7 +3,7 @@ name: self-evolution
 description: >
   Sistem evolusi diri Noru — auto-consolidate, prune, grow, dan cross-reference
   knowledge. Berjalan via cron (terjadwal) dan trigger (after complex task).
-version: 1.61
+version: 1.62
 author: Noru
 Tags: [evolution, self-improvement, consolidate, prune, grow]
 related_skills:
@@ -245,6 +245,7 @@ print("Evolusi terjadwal selesai. Knowledge graph terbarui.")
 ||||||||||||||| 2026-11-09 | 1.58 | Self-evolution cron: no changes — associative network stable at 190 skills, 172 rows, 32 domains. Memory at 84% (under 85%, no pruning). Cross-ref verified 0 missing 0 dead. Skills stable. Report: "Tidak ada perubahan - semuanya stable."
 ||||||||||||||| 2026-11-11 | 1.60 | REPAIR RUN. Root cause found for 3 consecutive cron runs reporting "domain header says N, actual rows = 0": repeated fuzzy patches had stripped leading pipes from ALL data rows (now `    **name** | tags | edges |`) and stacked pipes on Summary rows (`||||||||| DOMAIN | N ||`). Fix: new `scripts/normalize_network.py` parses tolerantly and rewrites clean tables, recomputes domain + summary counts, drops empty domains, optional `--add DOMAIN:name:tags:edges`. Result: 176 rows / 169 unique / 29 domains, verify_headers.py ✅, cross_ref 133/133 perfect. Deleted 15 loose knowledge-harvester .md artifacts in cognitive-architecture/ (github-*, wikipedia-main-page) that were phantom "missing skills" every run → moved to .archive/loose-md-2026-11-11/. Added 5 real skills: smc, smc-reload, smc-analysis-daemon, xauusdc-all-daemon, microsoft-office. New skill `hermes-silent-failure-diagnosis` capturing the 401/Telegram-no-reply runbook. Memory 78% (no prune needed).
 ||||||||||||||| 2026-11-12 | 1.61 | Self-evolution cron: added 2 new skills to associative network (user-chrome-automation → RESEARCH, modern-web-guidance → DEV/SOFTWARE DEVELOPMENT) — both created from 2026-11-11/12 Chrome-browse sessions and were the only 2 missing from network. Ran normalize_network.py --write --add (script rewrite, no hand-patching). Result: 136 skills on disk = 136 in network, 179 rows, 29 domains, verify_headers ✅, cross_ref ✅ perfect. Memory 74% (1,638/2,200, under 85% — no pruning). No patches/merges/deletions needed. GitHub backup: noru-agent-backup + .hermes + hermes-agent pushed to backup remotes.
+||||||||||||||| 2026-11-12 | 1.62 | Manual re-run (user request; same day as 1.61): verification only, no consolidation needed. cross_ref_network.py → 136 on disk = 136 in network, 0 missing, 0 dead. verify_headers.py → all checks passed. Session scan (12 most recent, incl. modern-web-guidance creation + 1.61 cron): no new topics/errors needing new or patched skills; no skill files modified after 10:02 today. Memory 74% (1,638/2,200) — no prune. Associative network unchanged: 136 skills, 179 rows, 29 domains.
 
 ## References
 - `references/github-backup.md` — Langkah backup cognitive architecture ke GitHub, termasuk verifikasi dan recovery

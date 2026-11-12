@@ -7,13 +7,23 @@ Dijalankan manual atau sebagai bagian dari self-evolution cron.
 
 ## Konfigurasi
 
+Dua repo, dua isi — jangan tertukar:
+
 | Detail | Value |
 |--------|-------|
-| **Repo** | Noru AI Agent |
-| **Owner** | syahdannoor |
-| **URL** | `https://github.com/syahdannoor/Noru-AI-Agent.git` |
-| **Branch** | `master` |
-| **Local Backup Dir** | `C:\Users\syahd\noru-agent-backup` |
+| **Repo A (config + skills)** | `https://github.com/syahdannoor/Hermes-Backup.git` (PRIVATE) |
+| Local dir Repo A | `C:\Users\syahd\.hermes` — remote name `backup`, branch `master` |
+| Isi Repo A | SOUL.md, config.yaml, cron/, sessions/, skills/ (mirror aktif) |
+| **Repo B (cognitive architecture)** | `https://github.com/syahdannoor/Noru-AI-Agent.git` |
+| Local dir Repo B | `C:\Users\syahd\noru-agent-backup` — remote `origin`, branch `master` |
+| **Repo C (agent source)** | Hermes-Backup branch `main`, remote `backup` dari `AppData/Local/hermes/hermes-agent` |
+
+### Sync skills ke Repo A (text-only filter — wajib)
+
+Aktif skills = `C:\Users\syahd\AppData\Local\hermes\skills` = **3.6 GB**, isinya `.curator_backups/*.tar.gz` (2.2 GB), `.venv` (torch dll), market-data CSV. Copy buta = repo bengkak.
+
+Mirror hanya file teks <2 MB, skip `.curator_backups`, `.venv`, `node_modules`, `__pycache__`, `.git` → 3.080 file / 75 MB. Setelah copy: `git status --porcelain | wc -l` harus ratusan, bukan ribuan.
+
 
 ---
 
@@ -79,7 +89,7 @@ Token diambil dari `gh auth token` — jangan tempel token literal ke file.
 TOKEN=$(gh auth token)
 # Bukti commit terbaru yang benar-benar ada di remote (contents/ hanya list file, tidak membuktikan commit):
 curl -s -H "Authorization: token $TOKEN" \
-  "https://api.github.com/repos/syahdannoor/Noru-AI-Agent/branches/master" \
+  "https://api.github.com/repos/syahdannoor/Hermes-Backup/branches/master" \
   | python -c "import sys,json; c=json.load(sys.stdin)['commit']; print(c['sha'][:8], c['commit']['committer']['date'], c['commit']['message'].splitlines()[0])"
 ```
 
